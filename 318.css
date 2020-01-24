@@ -1,0 +1,221 @@
+/* =============== E:/Work/src/module/css/greed.css ==============*/
+* {
+    box-sizing: inherit;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.x {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.y {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+}
+.row > .e {
+    margin-left: auto;
+}
+.col > .e {
+    margin-top: auto;
+}
+
+.px {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX( -50% );
+}
+.py {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY( -50% );
+}
+.pc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX( -50% );
+    transform: translateY( -50% );
+}
+
+.rs {
+    flex-grow: 1;
+}
+.fx {
+    flex-shrink: 0;
+}
+
+.my {
+    height: 100%;
+}
+.mx {
+    width: 100%;
+}
+
+.mvh,
+.mvy {
+    height: 100vh;
+}
+.mvw,
+.mvx {
+    width: 100vw;
+}
+
+.psa {
+    position: absolute;
+}
+
+.br {
+    border: 1px solid red;
+}
+/* =============== E:/Work/src/style.css ==============*/
+
+body {
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    left: 50%;
+    transform: translateX( -50% );
+    bottom: 0;
+    top: 0;
+    position: absolute;
+}
+.box {
+    width: 98%;
+    margin: auto;
+    border: 1px solid;
+}
+
+.list {
+    width: 100%;
+    overflow: auto;
+    border-top: 1px solid #000;
+}
+.list .item {
+    padding: 10px 10px;
+}
+.list .item input {
+    width: 50px;
+    text-align: right;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.totalMonth,
+.totalDay {
+    position: relative;
+    padding: 4px 10px;
+    font-size: 2em;
+    padding-top: 10px;
+    width: 50%;
+}
+.totalMonth:before,
+.totalDay:before {
+    content: 'за День';
+    font-size: 0.4em;
+    display: block;
+    top: 0;
+    left: 0;
+    color: #b1b1b1;
+    white-space: nowrap;
+}
+.totalMonth:before {
+    content: 'за Месяц';
+}
+.top {
+    display: flex;
+    padding: 0 10px;
+}
+.buffer {
+    height: 100px;
+}
+.date {
+    text-align: right;
+    padding: 8px 10px 0;
+}
+.date .fa{
+    margin-right: 3px;
+}
+.login-form {
+    height: 100%;
+    border: 1px solid;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+.login-form .text {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+.login-form .wrap {
+    margin-top: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form .icon {
+    color: #ff8224;
+    font-size: 2em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 61px;
+    height: 61px;
+    border: 1px solid;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 2px #ffc69b;
+}
+
+.add {
+    bottom: 10px;
+    right: 20px;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #8b8b8b;
+    box-shadow: 0 0 8px #292929;
+    border-radius: 50%;
+    font-size: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+    outline: none;
+}
+
+.addformBtn {
+    right: 50%;
+    transform: translateX( -50% );
+}

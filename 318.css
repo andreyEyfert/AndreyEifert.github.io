@@ -1,3 +1,96 @@
+/* =============== E:/Work/src/module/css/greed.css ==============*/
+* {
+    box-sizing: inherit;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.x {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.y {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+}
+.row > .e {
+    margin-left: auto;
+}
+.col > .e {
+    margin-top: auto;
+}
+
+.px {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX( -50% );
+}
+.py {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY( -50% );
+}
+.pc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX( -50% );
+    transform: translateY( -50% );
+}
+
+.rs {
+    flex-grow: 1;
+}
+.fx {
+    flex-shrink: 0;
+}
+
+.my {
+    height: 100%;
+}
+.mx {
+    width: 100%;
+}
+
+.mvh,
+.mvy {
+    height: 100vh;
+}
+.mvw,
+.mvx {
+    width: 100vw;
+}
+
+.psa {
+    position: absolute;
+}
+
+.br {
+    border: 1px solid red;
+}
+/* =============== E:/Work/src/style.css ==============*/
 
 body {
     padding: 0;

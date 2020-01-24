@@ -1,100 +1,52 @@
-/* =============== E:/Work/src/module/css/greed.css ==============*/
-* {
-    box-sizing: inherit;
-}
-
-body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.c {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.x {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-.y {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-}
-.col {
-    display: flex;
-    flex-direction: column;
-}
-.row > .e {
-    margin-left: auto;
-}
-.col > .e {
-    margin-top: auto;
-}
-
-.px {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX( -50% );
-}
-.py {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY( -50% );
-}
-.pc {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX( -50% );
-    transform: translateY( -50% );
-}
-
-.rs {
-    flex-grow: 1;
-}
-.fx {
-    flex-shrink: 0;
-}
-
-.my {
-    height: 100%;
-}
-.mx {
-    width: 100%;
-}
-
-.mvh,
-.mvy {
-    height: 100vh;
-}
-.mvw,
-.mvx {
-    width: 100vw;
-}
-
-.psa {
-    position: absolute;
-}
-
-.br {
-    border: 1px solid red;
-}
-/* =============== E:/Work/src/style.css ==============*/
 
 body {
     padding: 0;
 }
+
+.add-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    box-shadow: 0 0 4px 2px #b9b9b9;
+    padding: 10px 20px;
+    border: 1px solid #aeaeae;
+    background-color: #fff;
+}
+.add-form div {
+    margin: 4px 0;
+}
+.add-form input {
+    font-size: 1em;
+    padding: 5px 10px;
+    width: 200px;
+    display: inline-block;
+    border-radius: 4px;
+    border: 1px solid #8a8a8a;
+}
+.add-form button {
+    font-size: .8em;
+    padding: 7px 10px;
+    display: inline-block;
+}
+
+.list .item {
+    border-bottom: 1px solid #000;
+}
+.list .item:last-child {
+    border-bottom: none;
+}
+.list .item div {
+    display: inline-block;
+}
+.list .item .count {
+    width: 40px;
+}
+.menu {
+    border-top: 1px solid #000;
+    padding: 4px;
+}
+
 
 .container {
     width: 100%;
@@ -160,7 +112,7 @@ body {
     padding: 8px 10px 0;
 }
 .date .fa{
-    margin-right: 3px;
+    margin-right: 6px;
 }
 .login-form {
     height: 100%;
@@ -179,7 +131,7 @@ body {
     margin-bottom: 20px;
 }
 .login-form .wrap {
-    margin-top: 30%;
+    margin-top: 30vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -216,6 +168,6 @@ body {
 }
 
 .addformBtn {
-    right: 50%;
+    left: 50%;
     transform: translateX( -50% );
 }

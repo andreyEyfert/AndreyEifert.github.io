@@ -6,299 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="/340.js"></script>
-	<link rel="stylesheet" href="/340.css">
+	<script src="/51.js"></script>
+	<link rel="stylesheet" href="/51.css">
 </head>
-<body @click='bodyClick'>
-    <div class="container">
+<body>
 
-        <div class="login-form" :is="!user" >
-            <div class="wrap">
-                <div class="text">Войти</div>
-                <span class="fa fa-google icon" @click="sign"></span>
-            </div>
-        </div>
+    <load-screen- p:load="state == 0"></load-screen->
+    <login-form- p:login="state == 1" ></login-form->
+    <narad-list- g:total='0' p:is="state == 2" :narad :narads :price></narad-list->
+    <narad- g:total='0' p:is="state == 3" g:add_name="" :narad :narads :price></narad->
+    <price-list- :price p:is="state == 4"></price-list->
+    <price-list-form- name="" price="0" p:count="price.length" :is="showFormPrice"></price-list-form->
+    <select-month- :narads :is="changeItem"></select-month->
 
-        <div class="add-form" :is='addForm' @click="addFormClose" >
-            <div><input type="text" placeholder="Название" :input="name" ></div>
-            <div><input type="number" placeholder="Цена" :input="price" ></div>
-            <div class="row"><button @click="addItem" class="e">Добавить</button></div>
-        </div>
-
-        <div class="box col my">
-            <div class="date row">
-                <span @click="signOut" >Выйти</span>
-                <span class="fa fa-calendar e"></span>
-                <span>{{date}}</span>
-            </div>
-            <div class="top">
-                <div class="totalDay">{{ totalDay }}</div>
-                <div class="totalMonth">{{ totalMonth }}</div>
-            </div>
-            <div class="list rs" :is="priceListShow">
-                <div class="item row" :for="i in priceList">
-                    <div class="name">{{ i.name }}</div>
-                    <input type="number" class="e price" @change="changePrice( i )" :input="i.price" >
-                </div>
-                <div class="buffer"></div>
-            </div>
-            <div class="list rs" :is="!priceListShow">
-                <div class="item row" :for="i,index in dayList">
-                    <input type="number" :input="i.count" @change="( i, index )" >
-                    <div class="name">{{ i.name }}</div>
-                    <div class="e price">{{ i.count * i.price }}</div>
-                </div>
-                <div class="buffer"></div>
-            </div>
-            <button class="add c" :is="user" @click="{ this.data.priceListShow = !priceListShow }" >
-                <span :is="priceListShow" class="fa fa-list"></span>
-                <span :is="!priceListShow" class="fa fa-rub"></span>
-            </button>
-            <button class="add c addformBtn" :is="priceListShow" @click="addFormOpen" >
-                    <span class="fa fa-plus"></span>
-            </button>
-            <!-- <button class="add c" @click="sign" ><span class="fa fa-user"></span></button> -->
-        </div>
-    </div>
+    <!-- <div class="pnl">
+        {{ state }}
+        <button @click="{ this.data.state = 2 }">button</button>
+        <button @click="{ this.data.state = 3 }">button</button>
+        <button>button</button>
+        <button>button</button>
+    </div> -->
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
-<script>
-
-var App = Module[ 'E:/Work/src/module/app/index.js' ];
-
-//#region init
-
-firebase.initializeApp( {
-    apiKey: "AIzaSyA9Zs-N_tnUiYHl2tB5EJVznB8YhQsXreQ",
-    authDomain: "tehnostil-55b35.firebaseapp.com",
-    databaseURL: "https://tehnostil-55b35.firebaseio.com",
-    projectId: "tehnostil-55b35",
-    storageBucket: "tehnostil-55b35.appspot.com",
-    messagingSenderId: "352249737589",
-    appId: "1:352249737589:web:f5c8d4cf3a5a6061a6a33c"
-} );
-
-
-function set ( path, data ) {
-    var updates = {};
-    updates[ path ] = data;
-
-    firebase.database().ref().update( updates );
-}
-//#endregion
-//#region getDay
-
-var dayId = null
-var dayString = '01.01.2020'
-
-;(function ( ) {
-    const day = new Date();
-
-    dayString = 
-    ( ( day.getDate()  < 10 ? '0' : '' ) + day.getDate() ) + '.' +
-    ( ( day.getMonth() < 10 ? '0' : '' ) + ( day.getMonth() + 1 ) ) + '.' +
-    day.getFullYear()
-
-    day.setHours( 0 )
-    day.setMinutes( 0 )
-    day.setSeconds( 0 )
-    day.setMilliseconds( 0 )
-
-    dayId = day.getTime();
-})();
-
-//#endregion
-
-
-
-App( document.body, {
-    is: false,
-    name: '',
-    price: 0,
-    totalDay: 0,
-    totalMonth: 0,
-    addForm: false,
-    date: dayString
-}, function ( v ) {
-
-    const login = [];
-    var path = '';
-
-    var priceList = null;
-    var dayList = null;
-
-    //#region openclose
-    
-    var close = true;
-    this.addFormClose = function ( ) {
-        close = false;
-    }
-    this.addFormOpen = function ( ) { 
-        close = false; v.addForm = true;
-    }
-    this.bodyClick = function ( ) {
-        if ( close ) v.addForm = false;
-        close = true;
-    }
-    
-    
-    //#endregion
-
-    //#region total
-    
-    login.push(function ( ) {
-        
-        const day = new Date()
-
-        day.setHours( 23 )
-        day.setMinutes( 59 )
-        day.setSeconds( 59 )
-        day.setMilliseconds( 99 )
-        day.setDate( 0 )
-
-        var ref = firebase.database().ref( path + '/total' );
-        ref.orderByKey( )
-        .startAt( day.getTime().toString() )
-        .on( "value", function( snapshot ) {
-            const items = snapshot.val();
-            var total = 0 
-
-            if ( items )
-            Object.keys( items ).forEach( key => {
-                total += items[ key ]
-
-            } );
-
-            v.totalMonth = total;
-        } );
-    })
+    <script>
 
     
-    //#endregion
-    //#region price
-    
-    this.addItem = function ( ) {
-
-        if ( v.name == '' || v.price == 0 ) return
-    
-        const key = firebase.database().ref( path + '/price/' ).push().key
-
-        set( path + '/price/' + key, {
-            name: v.name,
-            price: v.price
-        } )
-
-        v.name = ''; v.price = 0
-    }
-    function loadPriceList ( ) {
-
-        v.pItems = priceList;
-
-        const m = [], day = [];
-
-        if ( priceList ) 
-        Object.keys( priceList ).forEach( function ( k ) {
-            m.push( { name: priceList[ k ].name, price: priceList[ k ].price, id: k } )
-            day.push( { name: priceList[ k ].name, price: priceList[ k ].price, count: 0, id: k } )
-        } );
-
-        v.priceList = m;
-        v.dayList = day;
-
-        if ( dayList ) LoadDayList()
-    }
-
-    login.push( f => {
-        firebase.database().ref( path + '/price/' )
-            .on( 'value', function( snapshot ) {
-
-                priceList = snapshot.val();
-
-                loadPriceList()
-            } );
-    } )
-
-    this.changePrice = function ( i ) {
-        set( path + '/price/' + i.id + '/price', i.price )
-    }
-    
-    
-    //#endregion
-    //#region day
-    
-    this.change = function ( v, i ) {
-        set( path + '/' + dayId + '/' + v.id + '/count' , v.count )
-    }
-
-    function LoadDayList ( ) {
-
-        var total = 0;
-
-        if ( priceList && dayList )
-        Object.keys( dayList ).forEach( n => {
-            v.dayList.forEach( i => {
-                if ( i.id == n ) {
-                    i.count = dayList[ n ].count;
-                    total += i.price * parseFloat( i.count );
-                }
-            } );
-        } );
-        
-        set( path + '/total/' + dayId, total )
-
-        v.totalDay = total
-    }
-    
-    login.push( f => {
-        firebase.database().ref( path + '/' + dayId + '/' )
-            .on( 'value', function( snapshot ) {
-
-                dayList = snapshot.val();
-                LoadDayList();
-            } );
-    } )
-    
-    //#endregion
-    //#region signin
-
-    this.bind( 'user', ( user ) => {
-
-        if ( user ) {
-
-            path = '/' + user.id;
-
-            set( path + '/name', 1 )
-            login.forEach( f => f( user ) );
-        }
-    } )
-    
-    this.sign = function ( ) {
-        firebase.auth().signInWithRedirect( new firebase.auth.GoogleAuthProvider() );
-    }
-    
-    firebase.auth().onAuthStateChanged( function ( user ) {
-        if ( user ) {
-            v.user = {
-                id: user.uid,
-                name: user.displayName
-            };
-        } else {
-            v.user = null;
-        }
-    }, function ( error ) {
-        v.user = null;
-    } );
-    
-    //#endregion
-
-    this.signOut = function ( ) {
-        firebase.auth().signOut()
-    }
-} )
-
-
-    </script>
+</script>
 </body>
-
 </html>

@@ -1103,7 +1103,7 @@ set = function ( path, data ) {
 
 //#endregion
 
-path = '/newcQXwtYhOzOTzfzQpijHpyKaonCJ2/';
+path = '';
 
 
 App( document.body, {

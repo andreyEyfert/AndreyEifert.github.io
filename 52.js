@@ -1103,7 +1103,7 @@ set = function ( path, data ) {
 
 //#endregion
 
-path = '/newcQXwtYhOzOTzfzQpijHpyKaonCJ2/';
+path = '';
 
 
 App( document.body, {
@@ -1153,13 +1153,15 @@ App( document.body, {
             v.state = 2;
             path = '/new' + user.uid + '/';
 
-            // if ( localStorage.wData ) {
-            //     const d = JSON.parse( localStorage.wData );
-            //     Object.keys( d ).forEach( function ( k ) { v[ k ] = d[ k ] } );
-            // }
+            if ( localStorage.wData ) {
+                const d = JSON.parse( localStorage.wData );
+                Object.keys( d ).forEach( function ( k ) { v[ k ] = d[ k ] } );
+            }
+            v.userid = user.uid
 
             loadPriceList()
         } else {
+            v.userid = 'null'
             v.text = 'no user'
             v.state = 1
         }

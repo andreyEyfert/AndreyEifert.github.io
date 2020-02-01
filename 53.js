@@ -1150,13 +1150,14 @@ App( document.body, {
     firebase.auth().onAuthStateChanged( function ( user ) {
         if ( user ) {
             v.text = 'user'
-            v.state = 2;
             path = '/new' + user.uid + '/';
 
             if ( localStorage.wData ) {
                 const d = JSON.parse( localStorage.wData );
                 Object.keys( d ).forEach( function ( k ) { v[ k ] = d[ k ] } );
             }
+            if ( v.state == 1 ) v.state = 2;
+
             v.userid = user.uid
 
             loadPriceList()

@@ -5,7 +5,7 @@ Template_PriceItem ="<div class=\"price_item wnd_modal\" :is @click=\"in\">\r\n 
 
 PriceItem = function ( v ) {
 
-    var close = true;
+    var close = true; 
 
     window.addEventListener( 'click', function ( ) {
         if ( close ) v.is = false

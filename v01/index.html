@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+	<script src="5.js"></script>
+	<link rel="stylesheet" href="5.css">
+</head>
+<body class="mvh">
+    <wnd-load-  p:is="state == 0"></wnd-load->
+    <wnd-login- p:is="state == 1" :uid uname="" upass=""></wnd-login->
+    <wnd-nds-   p:is="state == 2" :path :nds :price g:m="months" :month ></wnd-nds->
+    <wnd-nd-    p:is="state == 3" :path :nds :price :nd total="0" ></wnd-nd->
+    <wnd-price- p:is="showPriceList" :path :price ></wnd-price->
+
+    <price-item- name="" price="0" :path :is="showPriceItem" ></price-item->
+    <month-item- g:months :path :is="showMonth" ></month-item->
+
+    <button class="btn sign-out" @click="sign_out">
+        <span class="fa fa-sign-out"></span> 
+    </button>
+
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <script>
+    
+    var App = Module[ 'E:/Work/src/module/app/index.js' ];
+
+//#region init
+
+    firebase.initializeApp( {
+        apiKey: "AIzaSyA9Zs-N_tnUiYHl2tB5EJVznB8YhQsXreQ",
+        authDomain: "tehnostil-55b35.firebaseapp.com",
+        databaseURL: "https://tehnostil-55b35.firebaseio.com",
+        projectId: "tehnostil-55b35",
+        storageBucket: "tehnostil-55b35.appspot.com",
+        messagingSenderId: "352249737589",
+        appId: "1:352249737589:web:f5c8d4cf3a5a6061a6a33c"
+    } );
+
+    //#endregion
+
+    App( document.body, {
+
+        month: new Date( Date.now() ).getMonth(),
+        state: 0,
+        uid: localStorage.uid,
+        path: null,
+        size: 1,
+        nd_key: localStorage.nd_key,
+        months: [
+            "январь", "февраль", "Март", "апрель",
+            "Май", "Июнь", "Июль", "Август",
+            "Сентабрь", "Октябрь", "Ноябрь", "Декабрь"
+        ]
+    }, function ( v ) {
+
+        this.bind( 'uid', function ( uid ) {
+            v.state = uid ? ( Load(), 2 ) : 1;
+            localStorage.uid = uid || '';
+        } )
+        this.bind( 'uid nd', function ( uid,  nd ) {
+            if ( !uid ) return
+            v.state = nd ? 3 : 2;
+            localStorage.nd_key = nd && nd.key || '';
+        } )
+        this.bind( 'nd_key nds', function ( key, nds ) {
+            if ( !nds ) return
+
+            v.nd = nds[ key ] ;
+        } )
+
+        //#region Month
+        
+        var id;
+
+        this.set_month = function ( i ) {
+            if ( !id ) return
+            firebase.database().ref( v.path + 'nds/' + id + '/month' ).set( i );
+            v.showMonth = false;
+        }
+        this.change_month = function ( i ) {
+            id = i.key;
+            v.showMonth = true;
+        }
+        
+        //#endregion
+
+        this.sign_out = function ( ) {
+            localStorage.uid = '';
+            location.reload()
+        }
+
+        var data = null;
+
+        function Load ( ) {
+            v.path = 'user' + v.uid + '/';
+            //#region price
+            
+            const price = firebase.database().ref( 'user' + v.uid + '/price' );
+            
+            price.on( 'value', function ( s ) {
+                const d = s.val(); for ( var k in d ) d[ k ].key = k;
+                v.price = d
+            } )
+            
+            //#endregion
+            //#region nds
+            
+            const nds = firebase.database().ref( 'user' + v.uid + '/nds' );
+            
+            nds.on( 'value', function ( s ) {
+                const d = s.val(); for ( var k in d ) d[ k ].key = k;
+                v.nds = d;
+            } )
+
+            //#endregion
+        }
+    } )
+    
+    </script>
+</body>
+</html>

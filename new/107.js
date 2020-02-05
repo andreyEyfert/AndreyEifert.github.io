@@ -187,6 +187,7 @@ WndNd = function ( v ) {
             count: parseFloat( l && l[ k ] || 0 ),
             total: l && l[ k ] && ( parseFloat( l[ k ] ) * parseFloat( d[ k ].price )).toFixed( 2 ) || ''
         } ) )
+        v.total = v.total.toFixed( 2 );
     } )
 
     //#region func

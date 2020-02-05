@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Зарплата</title>
-	<script src="91.js"></script>
-	<link rel="stylesheet" href="91.css">
+    <title>Document</title>
+	<script src="107.js"></script>
+	<link rel="stylesheet" href="107.css">
 </head>
 <body class="mvh">
     <wnd-load-  p:is="state == 0"></wnd-load->
-    <wnd-login- p:is="state == 1" :uid uname="name" upass="pass"></wnd-login->
+    <wnd-login- p:is="state == 1" :uid uname="" upass=""></wnd-login->
     <wnd-nds-   p:is="state == 2" :path :nds :price g:m="months" :month ></wnd-nds->
     <wnd-nd-    p:is="state == 3" :path :nds :price :nd total="0" ></wnd-nd->
     <wnd-price- p:is="showPriceList" :path :price ></wnd-price->
@@ -92,7 +92,8 @@
         //#endregion
 
         this.sign_out = function ( ) {
-            v.uid = null;
+            localStorage.uid = '';
+            location.reload()
         }
 
         var data = null;

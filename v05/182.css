@@ -1,0 +1,286 @@
+/* =============== E:/Work/src/v05/.css ==============*/
+
+body {
+    font-family: monospace;
+}
+* {
+    box-sizing: border-box;
+}
+
+.wnd-full {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: #fff;
+    z-index: 2;
+}
+.rs {
+    flex-grow: 1;
+}
+
+.wnd-full .top :nth-child(2) {
+    margin-left: auto;
+}
+.wnd-full .top {
+    user-select: none;
+    background-color: #3e71f9;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+}
+.wnd-full .top .big{
+    font-size: 2em;
+    margin-right: 6px;
+}
+
+
+.wnd-full .list {
+    overflow: auto;
+    height: 100%;
+}
+.wnd-full .list .item:last-child {
+    margin-bottom: 170px;
+}
+.wnd-full .list .item {
+    border-bottom: 1px solid #aaa;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+.wnd-full .list .item * {
+    margin-right: 6px;
+}
+.wnd-full .list .item *:last-child {
+    margin-right: 0;
+}
+.wnd-full .input-r {
+    width: 40px;
+    border: none;
+    text-align: right;
+}
+
+.btn {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: none;
+    background-color: #3e71f9;
+    color: #fff;
+    box-shadow: 0 5px 5px -2px #3e71f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-btn {
+    bottom: 10px;
+    position: fixed;
+    left: 50%;
+    transform: translateX( -50% );
+}
+.back-btn {
+    bottom: 10px;
+    position: fixed;
+    right: 10px;
+}
+.list-btn {
+    font-size: 1.1em;
+    bottom: 10px;
+    position: fixed;
+    right: 60px;
+    z-index: 11;
+}
+
+
+.wnd-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    z-index: 200;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    box-shadow: 0 5px 5px -2px #aaa;
+    padding: 10px;
+    text-align: right;
+    max-width: 300px;
+    width: 300px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #aaa;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: 1px solid #aaa;
+}
+
+.sign-out {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 11;
+    font-size: 1.2em;
+    padding-left: 10px;
+}
+/* =============== E:/Work/src/v05/wnd/month.jss ==============*/
+.Wmonth {
+    border-radius: 5px;
+    height: 300px;
+    user-select: none;
+} 
+.Wmonth .list {
+    height: 100%;
+    overflow: auto;
+} 
+.Wmonth .item {
+    border: 1px solid #aaa;
+    padding: 10px 10px;
+    text-align: center;
+    margin-bottom: 1px;
+}
+/* =============== E:/Work/src/v05/wnd/date.jss ==============*/
+.wdate {
+    user-select: none;
+    height: 300px;
+    border-radius: 4px;
+    width: 283px;
+}
+.wdate .days {
+    width: 261px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.wdate .days .day {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1px;
+    border: 1px solid #999;
+}
+.wdate .day.over {
+    border: 1px solid #ccc;
+    color: #bbb;
+}
+.wdate .day.today {
+    border: 1px solid #f47537;
+    color: #f47537;
+    background-color: #fde1d5;
+}
+.wdate .info {
+    display: flex;
+    margin-bottom: 4px;
+}
+.wdate .info > * {
+    text-align: center;
+    font-size: 1.4em;
+    padding: 10px;
+}
+.wdate .info .month {
+    margin: 0 2px;
+    flex-grow: 1;
+    display: flex;
+}
+.wdate .info .month :nth-child( 2 ) {
+    flex-grow: 1;
+    text-align: center;
+}
+.wdate .next,
+.wdate .prev {
+    cursor: pointer;
+}
+/* =============== E:/Work/src/v05/wnd/load.jss ==============*/
+.load {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 21;
+}
+/* =============== E:/Work/src/v05/wnd/login.jss ==============*/
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+.login .wrap {
+    display: flex;
+    flex-direction: column;
+}
+.login a {
+    text-decoration: none;
+    margin-bottom: 7px;
+    display: inline-block;
+    text-align: right;
+    color: #0760f1;
+}
+/* =============== E:/Work/src/v05/wnd/price-list.jss ==============*/
+.price-list .name {
+    flex-grow: 1;
+    border: none;
+}
+.price-list .price {
+    width: 100px;
+    border: none;
+    text-align: right;
+}
+/* =============== E:/Work/src/v05/wnd/nd.jss ==============*/
+.nd .name {
+    flex-grow: 1;
+}
+/* =============== E:/Work/src/v05/wnd/nds.jss ==============*/
+.nds .month {
+    flex-grow: 1;
+    text-align: center;
+}
+.nds .total {
+    width: 57px;
+    text-align: right;
+}
+.nds .box {
+    transition: .3s;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 46px;
+    border-bottom: 1px solid #aaa;
+}
+.nds .box .item {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    user-select: none;
+    background-color: #fff;
+    position: absolute;border: none;
+}
+.nds .box .af ,
+.nds .box .bf {
+    position: absolute;
+    right: -56px;
+    height: 100%;
+    width: 50px;
+    top: 1px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6em;
+}
+.nds .box .bf {
+    left: -56px;
+}
+.nds .dell {
+    background-color: #ff2f2f;
+}
+.nds .edit {
+    background-color: #00b312;
+}

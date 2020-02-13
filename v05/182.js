@@ -408,7 +408,7 @@ Nds = function ( v ) {
 
         if ( price ) {
             v.items.forEach( i => i.list && Object.keys( i.list ).forEach( k => {
-                if ( price[ k ] ) i.total += i.list[ k ] * price[ k ].price / i.size;
+                if ( price[ k ] ) i.total += (i.list[ k ] * price[ k ].price )/ i.size;
                 if ( i.total && i.month == v.month ) v.total += i.total
             } ) );
         }

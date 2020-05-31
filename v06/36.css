@@ -154,7 +154,7 @@ body {
 .node .count {
     width: 50px;
 }
-.node .item-list.enable :after {
+.node .item-list.enable::after {
     content: 'W'
 }
 

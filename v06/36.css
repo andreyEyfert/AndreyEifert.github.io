@@ -1,0 +1,224 @@
+
+/* ----------- E:/server/src/work/i/.css ----------*/
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    user-select: none;
+    overflow-x: hidden;
+}
+.list {
+    overflow: auto;
+    flex-grow: 1;
+    padding-bottom: 100px;
+}
+.item-list,
+.list .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    border-bottom: 1px solid #f2f2f2;
+}
+.list .item-list * + * {
+    margin-left: 10px;
+}
+.list .item-list * {
+    text-align: right;
+}
+.list .item-list input {
+    background-color: transparent;
+    border: none;
+    font-family: monospace;
+}
+.top {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+.r {
+    flex-grow: 1;
+}
+.full-wnd {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.logout {
+    left: 10px;
+    bottom: 10px;
+    position: absolute;
+    z-index: 1000;
+}
+.btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #10d61f;
+    color: #fff;
+    font-size: 18px;
+    box-shadow: 5px 5px 15px #999;
+    outline: none;
+    position: fixed;
+}
+.menu.btn {
+    bottom: 10px;
+    right: 10px;
+}
+.price.btn {
+    bottom: 10px;
+    right: 110px;
+}
+.center.btn {
+    bottom: 10px;
+    left: 50%;
+    transform: translate( -50% );
+}
+.exit.btn {
+    bottom: 10px;
+    right: 60px;
+}
+
+.e {
+    margin-left: auto;
+}
+.top {
+    background-color: #10d61f;
+    color: #fff;
+    font-size: 24px;
+    padding: 0px 10px;
+    box-shadow: 0 5px 15px -2px #999;
+}
+.top * {
+    padding: 10px;
+}
+.top span {
+    font-size: 12px;
+}
+.item-list.enable::before,
+.item-list.enable::after{
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+    position: absolute;
+    font-size: 20px;
+    top: 0;
+    border-bottom: 1px solid #f2f2f2;
+    box-sizing: border-box;
+    color: #808080;
+    transition: .2s
+}
+.item-list.enable::before {
+    content: 'D';
+    padding-right: 30px;
+    left: -100px;
+    justify-content: flex-end;
+}
+.item-list.enable::after {
+    content: 'R';
+    padding-left: 30px;
+    right: -100px;
+    justify-content: flex-start;
+}
+.item-list.active::before {
+    background-color: #ff6f6f;
+    color: #fff !important;
+}
+.item-list.active::after {
+    background-color: #5eea7d;
+    color: #fff !important;
+}
+
+/* ----------- E:/server/src/work/i/comps/node.jss ----------*/
+.node .name {
+    text-align: left;
+    padding-left: 20px;
+}
+.node .total {
+    width: 50px;
+}
+.node .count {
+    width: 50px;
+}
+.node .item-list.enable :after {
+    content: 'W'
+}
+
+
+/* ----------- E:/server/src/work/i/comps/nodes.jss ----------*/
+.nodes .month {
+    text-align: center;
+}
+.nodes .total {
+    width: 50px;
+}
+.nodes .size {
+    width: 30px;
+}
+
+
+/* ----------- E:/server/src/work/i/comps/item-stat.jss ----------*/
+.item-stat .text {
+    font-size: 16px;
+    width: 100%;
+}
+.item-stat .r {
+    text-align-last: left;
+}
+.item-stat .t {
+    width: 60px;
+}
+.item-stat .top {
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* ----------- E:/server/src/work/i/comps/price.jss ----------*/
+.price .name {
+    text-align: left;
+}
+.price .price {
+    text-align: right;
+}
+.price .item-list.enable::after {
+    content: 'W'
+}
+
+
+/* ----------- E:/server/src/work/i/comps/login.jss ----------*/
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login .box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.login .box input {
+    width: 250px;
+    margin: 4px;
+    padding: 5px 10px;
+}
+.login .box button {
+    margin: 4px;
+    padding: 5px 10px;
+}
+

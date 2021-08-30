@@ -1,1 +1,30 @@
-386739
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    var apiKey = "dd767bcd07414f6bbf129c4dc1d1fd3b";
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/1274330687/", true);
+    xhr.setRequestHeader("X-API-Key", apiKey);
+    xhr.send( '' );
+    xhr.onreadystatechange = function (  ) {
+        console.log( arguments );
+    }
+    xhr.onload = function() {
+        alert(`Загружено: ${xhr.status} ${xhr.response}`);
+        console.log( xhr.response );
+    };
+
+
+
+    </script>
+</body>
+</html>

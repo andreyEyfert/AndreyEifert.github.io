@@ -141,7 +141,7 @@
     }
 
     
-    const data = {
+    const data = localStorage.data ? JSON.parse( localStorage.data ) : {
 	   show: -1,
         prices: [],
         items: []

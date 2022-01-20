@@ -141,20 +141,7 @@
     }
 
     
-    const data = localStorage.data ? JSON.parse( localStorage.data ) : {
-        show: -1,
-        prices: [
-            { name: 'Крой', price: 0.9 },
-            { name: 'Крой 1', price: 2.2 },
-            { name: 'Разгрузка Метала', price: 180 },
-            { name: 'Опытные', price: 260 },
-            { name: 'Обслуживание Станка', price: 200 }
-        ],
-        items: [
-            { time: D( '2/7/2022' ), subitems: { 1: 4000 }  },
-            { time: D( '2/1/2022' ), subitems: { 2: 2 }  }
-        ]
-    }
+    const data = {}
 
     const app = App( document.body, data )
 

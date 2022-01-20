@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+
+    .item_head {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 15px;
+        border-bottom: 1px solid #eee;
+        font-size: 16px;
+    }
+    .subitem {
+        padding: 10px 15px;
+        justify-content: space-between;
+        flex-wrap: 13px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+    }
+    .list .subitem {
+        display: none;
+        padding: 10px 25px;
+        background-color: #efefef;
+        grid-gap: 10px;
+    }
+    .show .subitem {
+        display: flex;
+    }
+    .item_count {
+        width: 55px;
+    }
+    .item_count:focus {
+        border-bottom: 1px solid #000;
+        padding: 0;
+    }
+    .item_price {
+        width: 75px;
+        text-align: right;
+    }
+    .item_name {
+        flex-grow: 1;
+    }
+    input {
+        flex-grow: 1;
+        width: auto;
+        padding: 0 0 0 1px;
+        margin: 0;
+        border: none;
+        display: block;
+        background-color: transparent;
+        outline: none;
+    }
+    .month_info {
+        display: flex;
+        font-size: 19px;
+        background-color: #72A8E8;
+        padding: 10px 30px;
+        justify-content: space-between;
+        color: #fff;
+    }
+    .item_total {
+        flex-grow: 1;
+        text-align: right;
+    }
+    .right {
+        flex-grow: 0;
+        width: 75px;
+        text-align: right;
+    }
+    
+    </style>
+	<script src="ifile_41.js"></script>
+	<link rel="stylesheet" href="ifile_41.css">
+</head>
+<body>
+    <div class="section"  :route="?price">
+        <div class="header">
+            Наименование деталей
+        </div>
+        <div class="sublist">
+            <div class="subitem" :for="i in prices" >
+                <input type="text" :input="i.name"  @focus="( el )">
+                <input class="right" type="number" :input="i.price" @focus="( el )" >
+            </div>
+        </div>
+        <div class="btn" @click="add_item">+</div>
+        <div class="btn center" @click="go( '?items' )">P</div>
+    </div>
+    <div class="section" :route="?items">
+        <div class="header">
+            Наряды
+        </div>
+        <div class="month_info">
+            <div class="month_id">Март</div>
+            <div class="month_total">{{ Total_m().toFixed( 2 ) }}</div>
+        </div>
+        <div class="list">
+            <div class="item" :for="item, j in items" :class="[ j == show && 'show']" >
+                <div class="item_head" >
+                    <div class="item_time">{{ DS( item.time ) }}</div>
+                    <div class="item_total"
+                        @click="{ data.show = show == j ? -1 : j }"
+                    >{{ Total( item ).toFixed( 2 ) }}</div>
+                </div>
+                <div class="sublist">
+                    <div class="subitem" :for="i, ind in prices" >
+                        <div class="item_price">
+                            {{ item.subitems[ ind ] && item.subitems[ ind ] != 0  ? (item.subitems[ ind ] * i.price).toFixed( 2 ) : '' }}
+                        </div>
+                        <div class="item_name">{{ i.name }}</div>
+                        <input class="item_count right" type="number" :input="item.subitems[ ind ]" @focus="( el )">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn" @click="add">+</div>
+        <div class="btn center" @click="go( '?prices' )">P</div>
+    </div>
+
+
+    <script>
+    
+    var App = MODULE__4;
+
+    function D ( s ) { return new Date( s ).getTime() }
+    function DS ( n ) { n = new Date( n ); return `${ n.getDate() }.${ n.getMonth() + 1 }.${ n.getFullYear() }` }
+        
+
+    function Total ( item ) {
+        var t = 0; for ( var k in item.subitems ) t += item.subitems[ k ] * data.prices[ k ].price;
+        return t
+    }
+    function Total_m (  ) {
+        var t = 0; for ( var k in data.items ) t += Total( data.items[ k ] )
+        return t
+    }
+
+    
+    const data = localStorage.data ? JSON.parse( localStorage.data ) : {
+        show: -1,
+        prices: [
+            { name: 'Крой', price: 0.9 },
+            { name: 'Крой 1', price: 2.2 },
+            { name: 'Разгрузка Метала', price: 180 },
+            { name: 'Опытные', price: 260 },
+            { name: 'Обслуживание Станка', price: 200 }
+        ],
+        items: [
+            { time: D( '2/7/2022' ), subitems: { 1: 4000 }  },
+            { time: D( '2/1/2022' ), subitems: { 2: 2 }  }
+        ]
+    }
+
+    const app = App( document.body, data )
+
+    app.focus = function ( e ) {
+        e.select()
+    }
+    app.add = function ( e ) {
+        data.items.push( { time: new Date().getTime(), subitems: {} } )
+    }
+    app.add_item = function ( ) {
+        data.prices.push( { name: '', price: 0 } )
+    }
+
+    if ( !/(items|prices)$/.test( document.location ) ) {
+        app.go( '?items' )
+    }
+
+    window.addEventListener( 'beforeunload', function ( ) {
+        localStorage.data = JSON.stringify( data )
+    } )
+
+    
+    </script>
+</body>
+</html>

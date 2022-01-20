@@ -141,7 +141,10 @@
     }
 
     
-    const data = {}
+    const data = JSON.parse( localStorage.data ) || {
+        prices: [],
+        items: []
+    }
 
     const app = App( document.body, data )
 

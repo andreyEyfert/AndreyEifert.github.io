@@ -13,6 +13,7 @@ body {
 }
 .list {
     padding-top: 72px;
+    padding-bottom: 272px;
 }
 .list_item .list {
     padding-top: 64px;

@@ -74,7 +74,7 @@
 	<link rel="stylesheet" href="ifile_58.css">
 </head>
 <body>
-    
+    <div class="btn" @click="{ (function(){  var g = JSON.parse( prompt( '-' ) ); data.prices = g.prices; data.items = g.items.map( i => {  var r = [];  for ( var k in i.subitems ) { r[ k ] = i.subitems[ k ] }; i.items= r; delete i.subitems; return i  } );    }()) }">--</div>
 
 <div class="route items" :route="?items">
     <div class="top">

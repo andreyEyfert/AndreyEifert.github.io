@@ -29,6 +29,9 @@ body {
     box-sizing: border-box;
     box-shadow: 5px 5px 10px -2px #999;
 }
+.h {
+    left: 20px;
+}
 .months_list {
     position: fixed;
     top: 10px;

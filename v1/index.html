@@ -99,7 +99,7 @@
     <div class="section" :route="?items">
         <div class="header">
             Наряды
-    <div class="" @click="{alert(localStorage.data) }">-</div>
+    <div class="" @click="{navigator.clipboard.writeText(localStorage.data).then(function() {console.log('Async: Copying to clipboard was successful!');}, function(err) {console.error('Async: Could not copy text: ', err);}); }">-</div>
         </div>
         <div class="month_info">
             <div class="month_id">Март</div>

@@ -433,8 +433,6 @@ const start = app.move(
 
         if ( is == true && Math.abs( Y ) > 10 ) {
             el.style.left = 0 + 'px'
-            window.removeEventListener( app.EV_NAMES.move, move )
-            window.removeEventListener( app.EV_NAMES.up, up )
         }
 
         if ( Math.abs( X ) > 15 ) {

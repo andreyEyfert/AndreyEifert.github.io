@@ -7,11 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <textarea name="" id="ff" cols="3000" rows="100"></textarea>
     <script>
         const m = localStorage.data2
 
+        document.querySelector( '#ff' ).value = JSON.stringify( m )
 
-        alert( JSON.stringify( m ))
 
     </script>
 </body>

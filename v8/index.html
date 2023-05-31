@@ -107,7 +107,9 @@
                             <div class="">{{ i.koef }}</div>
                             <div class="">{{ i.total.toFixed( 2 ) }}</div>
                         </div>
-                        <div class="row" :for="v in i.items">
+                        <div class="row"
+                            :for="v in i.items"
+                            :style="{ display: v.total == 0 ? 'none' : '' }">
                             <div>{{ v.name }}</div>
                             <div class="r">{{ v.count }}</div>
                             <div>{{ v.total.toFixed( 2 ) }}</div>

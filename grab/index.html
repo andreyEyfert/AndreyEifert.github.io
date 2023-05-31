@@ -7,13 +7,37 @@
     <title>Document</title>
 </head>
 <body>
-    <textarea name="" id="ff" cols="3000" rows="100"></textarea>
+    
     <script>
-        const m = localStorage.data2
 
-        document.querySelector( '#ff' ).value = JSON.stringify( m )
+        const { items: itm, prices } = JSON.parse( localStorage.data2 )
+        const itemsn = []
 
+        for ( var { time, items } of itm ) {
+            const d = {}
+            const time_ = new Date( time )
 
+            time_.setMonth( time_.getMonth() - 1 )
+            time_.setHours( 9 )
+
+            const m = { time: time_.getTime(), koef: 1, items: d }
+
+            for ( var j = 0; j < items.length; j++ ) {
+                if ( items[ j ] ) {
+                    d[ j ] = { count: parseFloat( items[ j ] ) }
+                }
+            }
+            itemsn.push( m )
+        }
+
+        const data = JSON.parse( localStorage.v0001data )
+
+        data.items  = itemsn
+        data.prices = prices
+
+        // v0001data
+        localStorage.v0001data = JSON.stringify( data )
+        console.log( data );
     </script>
 </body>
 </html>

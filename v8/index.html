@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="vfile_433.js"></script>
+<link rel="stylesheet" href="vfile_433.css">
+</head>
+<body>
+
+    <div id="w_items" class="window">
+        <div class="header">
+            <div>
+                <div class="big month">{{ month }} </div>
+                <div class="small count">{{ count }}</div>
+            </div>
+            <div>
+                <div class="big total">{{ total }}</div>
+                <div class="smal tar midle"> {{ midle }}</div>
+            </div>
+        </div>
+        <div class="list" id="list">
+            <div class="item" :for="i in items">
+                <div class="item_box" @down="down: i.index, pos, el">
+                    <div class="time" @click=":i.index">{{ i.time }}</div>
+                    <div class="koef">{{ i.koef }}</div>
+                    <div class="total">{{ i.total }}</div>
+                </div>
+            </div>
+        <input type="number" id="i_time" @input=":el">
+        </div>
+        <div class="footer">
+            <div class="btn" @down="G_MONTH_CHANGE:5">5</div>
+            <div class="btn" @down="G_STATE:4">L</div>
+            <div class="add" @down="add">+</div>
+            <div class="btn" @down="G_STATE:3">P</div>
+            <div class="btn">M</div>
+        </div>
+    </div>
+    <div id="w_prices" class="window">
+        <div class="header">
+            <div>
+                <div class="month">Цены</div>
+            </div>
+            <div>
+                <div class=" count">{{ count }}</div>
+            </div>
+        </div>
+        <div class="list" id="list">
+            <div class="item" :for="i,ind in items">
+                <div class="item_box">
+                    <input type="text" :input=":i.name" @focus=":el" @input="set:i,ind,'name'">
+                    <input type="number" class="r" :input=":i.price" @focus=":el" @blur="set:i,ind,'price',1">
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="btn" @down="G_STATE:1">N</div>
+            <div class="btn" @down="G_STATE:4">L</div>
+            <div class="add" @down="add">+</div>
+            <div class="btn"></div>
+            <div class="btn">M</div>
+        </div>
+    </div>
+    <div id="w_item" class="window">
+        <div class="header">
+            <div>
+                <div class="big month">{{ date }}</div>
+            </div>
+            <div>
+                <input class="big" type="number" :input=":koef" @focus=":el" @input="koef:el">
+            </div>
+            <div>
+                <div class="big count">{{ total }}</div>
+            </div>
+        </div>
+        <div class="list" id="list">
+            <div class="item" :for="i,ind in items">
+                <div class="item_box">
+                    <div class="num">{{ i.total }}</div>
+                    <div class="fg1">{{ i.name }}</div>
+                    <input type="number" class="r" :input=":i.count" @focus=":el" @input="set:i,ind">
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="btn" @down="G_STATE:1">N</div>
+            <div class="btn" @down="G_STATE:4">L</div>
+            <div class="btn"></div>
+            <div class="btn" @down="G_STATE:3">P</div>
+            <div class="btn">M</div>
+        </div>
+    </div>
+    <div id="w_list" class="window">
+        <div class="header">
+            <div>
+                <div class="month">Статистика</div>
+            </div>
+        </div>
+        <div class="list" id="list">
+            <div class="item":for="i in items">
+                    <div class="list_item" >
+                        <div class="row title">
+                            <div class="">{{ i.title }}</div>
+                            <div class="">{{ i.koef }}</div>
+                            <div class="">{{ i.total.toFixed( 2 ) }}</div>
+                        </div>
+                        <div class="row" :for="v in i.items">
+                            <div>{{ v.name }}</div>
+                            <div class="r">{{ v.count }}</div>
+                            <div>{{ v.total.toFixed( 2 ) }}</div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="btn" @down="G_STATE:1">N</div>
+            <div class="btn"></div>
+            <div class="btn"></div>
+            <div class="btn" @down="G_STATE:3">P</div>
+            <div class="btn">M</div>
+        </div>
+    </div>
+<!-- Импорт файла './css/';-->
+
+
+<!-- Импорт файла './js/items.js';-->
+
+
+<!-- Импорт файла './js/prices.js';-->
+
+
+<!-- Импорт файла './js/item.js';-->
+
+
+<!-- Импорт файла './js/list.js';-->
+
+</body>
+</html>

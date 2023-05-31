@@ -1,0 +1,213 @@
+/* |||||||||||||||||||||||||  ./src/work/v2/css/index.css */
+body {
+    padding: 0;
+    margin: 0;
+    --c:  rgb(62, 223, 62);
+    --cb: rgb(57, 201, 122);
+    overflow: hidden;
+    user-select: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+}
+* {
+    box-sizing: border-box;
+}
+.window {
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: -webkit-fill-available;
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+    z-index: 1;
+}
+.header {
+    background-color: var( --cb );
+    color: #fff;
+    padding: 17px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px -2px #0006;
+}
+.big {
+    font-size: 20px;
+}
+.small {
+    font-size: 16px;
+}
+.tar{
+    text-align: right;
+}
+
+.list {
+    overflow: auto;
+    padding-bottom: 300px;
+    flex-grow: 1;
+}
+.item {
+    position: relative;
+    border-bottom: 1px solid #0004;
+    overflow: hidden;
+}
+.item_box  > * {
+    white-space: nowrap;
+}
+.item_box {
+    position: relative;
+    padding: 19px 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.item_box::before, 
+.item_box::after {
+    position: absolute;
+    top: 0;
+    left: -60px;
+    width: 60px;
+    height: 100%;
+    content: 'D';
+    background-color: rgb(190, 49, 49);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+}
+.item_box::before {
+    position: absolute;
+    content: 'E';
+    left: auto;
+    right: -60px;
+    background-color: rgb(63, 235, 140);
+}
+.c {
+    display: flex;
+    justify-content: center;
+}
+.r {
+    text-align: right;
+}
+.add {
+    width: 50px;
+    height: 50px;
+    font-size: 36px;
+    background-color: var( --cb );
+    border-radius: 50%;
+    color: #fff;
+    line-height: 51px;
+    text-align: center;
+    margin-top: -30px;
+    border: 2px solid #fff;
+    box-shadow: 0 -2px 15px -2px #0006;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    box-shadow: 0 -2px 10px -2px #0006;
+    border-top: 1px solid rgb(48, 197, 115);
+    background-color: var( --cb );
+}
+.btn {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+}
+.header input {
+    text-align: right;
+    background-color: inherit;
+    color: inherit;
+}
+input {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    width: 80px;
+    outline: none;
+    border: none;
+}
+.fg1 {
+    flex-grow: 1;
+}
+.num {
+    width: 90px;
+    text-align: right;
+    padding-right: 10px;
+}
+.list_item {
+    border-radius: 8px;
+    margin: 10px 15px;
+    box-shadow: 0 0 10px -2px #0006;
+    font-size: 15px;
+}
+.row {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+.title {
+    border: 1px solid rgb(94, 185, 135);
+    border-width: 1px 1px 0 1px;
+    font-size: 18px;
+    padding: 19px;
+    border-radius: 8px 8px 0 0;
+    background-color: rgb(87, 206, 140);
+    color: #fff;
+    text-shadow: 1px 1px 3px #0006;
+    border-bottom: 1px solid rgb(106, 180, 139);
+}
+.item:has( .list_item ) {
+    border-bottom: none;
+}
+#i_time {
+    /* display: none; */
+    opacity: 0;
+    z-index: -1;
+    /* visibility: hidden; */
+}
+
+#w_items .item_box :nth-child( 1 ) {
+    width: 100px;
+}
+#w_items .item_box :nth-child( 2 ) {
+    flex-grow: 1;
+    text-align: center;
+}
+#w_items .item_box :nth-child( 3 ) {
+    width: 100px;
+    text-align: right;
+}
+
+
+#w_item .item_box :nth-child( 1 ) {
+    width: 100px;
+}
+#w_item .item_box :nth-child( 2 ) {
+    flex-grow: 1;
+}
+#w_item .item_box :nth-child( 3 ) {
+    width: 100px;
+    text-align: right;
+}
+.row :nth-child( 1 ) {
+    flex-grow: 1;
+}
+.row :nth-child( 2 ),
+.row :nth-child( 3 ) {
+    width: 100px;
+    text-align: right;
+}
+
+#w_prices .item_box :nth-child( 1 ) {
+    flex-grow: 1;
+}
+#w_prices .item_box :nth-child( 2 ) {
+    width: 100px;
+}
+/* ||||||||||||||||||||||||| */

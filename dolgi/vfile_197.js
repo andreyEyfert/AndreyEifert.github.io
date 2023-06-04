@@ -294,7 +294,7 @@ user.obs.W = function ( D ) {
     let gtotal = 0
     
     for ( var i of D.items ) {
-        if ( i.id == D.id ) {
+        if ( i.id == D.item.id ) {
             total += i.val
         }
         gtotal += i.val

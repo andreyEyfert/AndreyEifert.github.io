@@ -276,7 +276,7 @@ MODULES.M190
 
 const data = localStorage.DOLG_DATAv1 ? JSON.parse( localStorage.DOLG_DATAv1 ) : {
     total: 0,
-    item: null,
+    item: {},
     state: 1,
     names: [],
     items: []

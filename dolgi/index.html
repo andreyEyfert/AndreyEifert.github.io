@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="кг">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Долги</title>
+    <script src="vfile_197.js"></script>
+    <link rel="stylesheet" href="vfile_197.css">
+</head>
+<body>
+    <div :app-el="user" class="window" :class="{ hide: state != 2 }">
+        <div class="header">
+            <div class="big">{{ names[ id ].name }}</div>
+            <div class="big">{{ total.toFixed( 2 ) }}</div>
+        </div>
+        <div class="list">
+            <div class="item" :for="i,ind in items" :class="{ hide: i.id != id }">
+                <div class="item_box" @onclickedmove="slide:i,ind,elem,pos">
+                    <div class="t">
+                        <div class="q">{{ getDate( i.time ) }}</div>
+                        <input type="text" :input="i.comit" @focus=":elem">
+                    </div>
+                    <input type="number" :input="i.val" @focus=":elem" @blur>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="btn"></div>
+            <div class="btn add" @down="add">+</div>
+            <div class="btn" @down="G_STATE:1,1">Back</div>
+        </div>
+    </div>
+    <div :app-el="main" class="window" :class="{ hide: state != 1 }">
+        <div class="header">
+            <div class="big">Долги</div>
+            <div class="big">{{ gtotal.toFixed( 2 ) }}</div>
+        </div>
+        <div class="list">
+            <div class="item" :for="i,ind in names">
+                <div class="item_box" @onclickedmove="slide:i,ind,elem,pos">
+                    <input type="text" :input="i.name" @focus=":elem">
+                    {{ getTotal( ind ) }}
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div></div>
+            <div class="add" @down="add">+</div>
+            <div></div>
+        </div>
+    </div>
+
+</body>
+</html>

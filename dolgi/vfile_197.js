@@ -274,7 +274,7 @@ return exports; }( {} )
 MODULES.M199 = function( exports ) {
 MODULES.M190
 
-const data = localStorage.DOLG_DATAv1 ? JSON.parse( localStorage.DOLG_DATAv1 ) : {
+const data = !localStorage.DOLG_DATAv1 ? JSON.parse( localStorage.DOLG_DATAv1 ) : {
     total: 0,
     item: {},
     state: 1,

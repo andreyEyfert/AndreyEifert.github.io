@@ -276,28 +276,15 @@ MODULES.M190
 
 const data = localStorage.DOLG_DATAv1 ? JSON.parse( localStorage.DOLG_DATAv1 ) : {
     total: 0,
-    id: 0,
+    item: null,
     state: 1,
-    names: [
-        { name: 'Брат' },
-        { name: 'Марина' },
-    ],
-    items: [
-        { val: 1000, id: 0, comit: 'На Колеса'  , time: Date.now() },
-        { val: 1000, id: 0, comit: 'На Еду'     , time: Date.now() },
-        { val: 3000, id: 0, comit: 'На Кредит'  , time: Date.now() },
-        { val: 1000, id: 0, comit: 'На Колеса'  , time: Date.now() },
-        { val: 1000, id: 1, comit: 'На Еду'     , time: Date.now() },
-        { val: 3000, id: 1, comit: 'На Кредит'  , time: Date.now() },
-        { val: 1000, id: 1, comit: 'На Колеса'  , time: Date.now() },
-        { val: 1000, id: 1, comit: 'На Еду'     , time: Date.now() },
-        { val: 3000, id: 1, comit: 'На Кредит'  , time: Date.now() },
-    ]
+    names: [],
+    items: []
 }
 
-App.on( 'STATE', function ( state, id ) {
+App.on( 'STATE', function ( state, item ) {
     data.state  = state;
-    data.id     = id
+    data.item     = item
 } )
 const user = App( 'user', data )
 
@@ -338,7 +325,7 @@ user.slide_up = ( i, ind, elem, pos, D ) => {
     elem.style.left = '0px'
 }
 user.add = ( D ) => {
-    D.items.push( { val: 0, id: D.id, comit: '', time: Date.now() } )
+    D.items.push( { val: 0, id: D.item.id, comit: '', time: Date.now() } )
     user.redraw()
 }
 user.blur = ( D ) => {
@@ -369,10 +356,12 @@ App.on( 'CLOSE',  function ( e ) {
 getTotal = function ( id ) {
     let total = 0
     
-    for ( var i of data.items )
+    for ( var i of data.items ){
+
         if ( i.id == id ) {
             total += i.val
         }
+    }
     return total
 }
 
@@ -388,19 +377,27 @@ main.slide_move = ( i, ind, elem, pos ) => {
 }
 main.slide_up = ( i, ind, elem, pos, D ) => {
     let ox = parseInt( elem.style.left )
-
+    
     if ( ox == 60 ) {
-        D.items.splice( ind, 1 )
+        D.names.splice( ind, 1 )
+
+        const { items } = D;
+        
+        for ( var j = items.length - 1; j >= 0; j-- ) {
+            if ( items[ j ].id === ind ) {
+                items.splice( j, 1 )
+            }
+        }
         main.redraw()
     } else
     if ( ox == -60 ) {
-        App.emit( 'STATE', 2, ind )
+        App.emit( 'STATE', 2, i,  )
     }
 
     elem.style.left = '0px'
 }
 main.add = (  D ) => {
-    D.names.push( { name: '' } )
+    D.names.push( { name: '', id: Date.now() } )
     main.redraw()
 }
 main.focus = ( el ) => {

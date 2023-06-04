@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="кг">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Долги</title>
-    <script src="vfile_197.js"></script>
-    <link rel="stylesheet" href="vfile_197.css">
+    <title>Document</title>
+<script src="vfile_197.js"></script>
+<link rel="stylesheet" href="vfile_197.css">
 </head>
 <body>
     <div :app-el="user" class="window" :class="{ hide: state != 2 }">
         <div class="header">
-            <div class="big">{{ names[ id ].name }}</div>
+            <div class="big">{{ item && item.name }}</div>
             <div class="big">{{ total.toFixed( 2 ) }}</div>
         </div>
         <div class="list">
-            <div class="item" :for="i,ind in items" :class="{ hide: i.id != id }">
+            <div class="item" :for="i,ind in items" :class="{ hide: i.id != item.id }">
                 <div class="item_box" @onclickedmove="slide:i,ind,elem,pos">
                     <div class="t">
                         <div class="q">{{ getDate( i.time ) }}</div>
@@ -40,7 +40,7 @@
             <div class="item" :for="i,ind in names">
                 <div class="item_box" @onclickedmove="slide:i,ind,elem,pos">
                     <input type="text" :input="i.name" @focus=":elem">
-                    {{ getTotal( ind ) }}
+                    {{ getTotal( i.id ) }}
                 </div>
             </div>
         </div>
@@ -50,6 +50,5 @@
             <div></div>
         </div>
     </div>
-
 </body>
 </html>
